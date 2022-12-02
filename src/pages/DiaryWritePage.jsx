@@ -19,35 +19,35 @@ const DiaryWritePage = () => {
   const day = dayjs();
 
       /** 일기작성 요청 api */
-      const writeRequest = async () => {
-        if(e == 1) {
-        await axios
-          .post(`http://localhost:8080/diary/write`, {
-            accessToken: getCookie("accessToken"),
-            content: contentValue,
-            date: dateValue,
-            feeling: feelingValue,
-            refreshToken: getCookie("refreshToken"),
-            title: titleValue,
-            weather: weatherValue
-              })
-          .then(res => {
-            if(res.data.result == true) {
-              setCookie("accessToken", res.data.accessToken, 1)
-              setCookie("refreshToken", res.data.refreshToken, 1)
-              dispatch(login())
-              navigate("/main")
-            }
-            else {
-              alert("존재하지 않는 이메일입니다.")
-            }
-          })
-          .catch(error => {
-            alert("요청에 실패하였습니다.")
-            console.log(error);
-          })
-        }
-      };
+      // const writeRequest = async () => {
+      //   if(e == 1) {
+      //   await axios
+      //     .post(`http://localhost:8080/diary/write`, {
+      //       accessToken: getCookie("accessToken"),
+      //       content: contentValue,
+      //       date: dateValue,
+      //       feeling: feelingValue,
+      //       refreshToken: getCookie("refreshToken"),
+      //       title: titleValue,
+      //       weather: weatherValue
+      //         })
+      //     .then(res => {
+      //       if(res.data.result == true) {
+      //         setCookie("accessToken", res.data.accessToken, 1)
+      //         setCookie("refreshToken", res.data.refreshToken, 1)
+      //         dispatch(login())
+      //         navigate("/main")
+      //       }
+      //       else {
+      //         alert("존재하지 않는 이메일입니다.")
+      //       }
+      //     })
+      //     .catch(error => {
+      //       alert("요청에 실패하였습니다.")
+      //       console.log(error);
+      //     })
+      //   }
+      // };
 
             /**쿠키값 얻기 */
   function getCookie(name) {
