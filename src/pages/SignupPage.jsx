@@ -35,7 +35,7 @@ const SignupPage = () => {
   const signupRequset = async () => {
     if(emailAvailable == 1 && pwAvailable == 1 && privacyValue == true && answerAvailable == 1 && quizAvailable == 1) {
     await axios
-      .post(`http://localhost:8080/member/register`, {
+      .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/register`, {
           email: emailValue,
           password: pwValue,
           passwordAnswer: answerValue,
@@ -59,7 +59,7 @@ const SignupPage = () => {
     const emailCheckRequest = async () => {
       if(emailAvailable == 1 && emailCheck == false) {
       await axios
-        .post(`http://localhost:8080/member/duplicate-check?email=${emailValue}`)
+        .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/duplicate-check?email=${emailValue}`)
         .then(res => {
           if(res.data == true) {
             alert("중복되지 않은 이메일입니다.")

@@ -16,7 +16,7 @@ const DairyListPage = () => {
   /** 일기목록 조회 api */
   const listRequest = async (num) => {
     await axios
-      .post(`http://localhost:8080/diary/view/list`, {
+      .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/view/list`, {
         accessToken: getCookie("accessToken"),
         page: num,
         refreshToken: getCookie("refreshToken"),
@@ -33,7 +33,7 @@ const DairyListPage = () => {
   /** 일기 목록 조회 api */
   const listCountReqeust = async () => {
     await axios
-      .post(`http://localhost:8080/diary/view/diary-num`, {
+      .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/view/diary-num`, {
         accessToken: getCookie("accessToken"),
         refreshToken: getCookie("refreshToken"),
       })
@@ -55,7 +55,7 @@ const DairyListPage = () => {
   const deleteDiaryRequest = (id) => {
     axios({
       method: "delete", // [요청 타입]
-      url: "http://localhost:8080/diary/delete", // [요청 주소]
+      url: "http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/delete", // [요청 주소]
       data: {
         accessToken: getCookie("accessToken"),
         id: id,

@@ -25,7 +25,7 @@ const FindPasswordPage = () => {
   const questionRequest = async () => {
     if (emailAvailable == 1) {
       await axios
-        .post(`http://localhost:8080/member/search/question-by-email?email=${emailValue}`)
+        .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/search/question-by-email?email=${emailValue}`)
         .then((res) => {
           if (res.data) {
             setQuiz(res.data)
@@ -44,7 +44,7 @@ const FindPasswordPage = () => {
     const findPwRequest = async () => {
       if(emailAvailable == 1 && pwAvailable == 1 && answerAvailable == true &&  pwCheckAvailable == 1) {
       await axios
-        .post(`http://localhost:8080/member/search/password`, {
+        .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/search/password`, {
             email: emailValue,
             newPassword: pwValue,
             passwordAnswer: answerValue,

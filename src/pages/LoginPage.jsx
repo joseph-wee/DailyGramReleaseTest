@@ -35,7 +35,7 @@ const LoginPage = () => {
     const loginRequest = async () => {
       if(emailAvailable == 1 && pwAvailable == 1) {
       await axios
-        .post(`http://localhost:8080/member/login`, {
+        .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/login`, {
           email: emailValue,
           password: pwValue
             })

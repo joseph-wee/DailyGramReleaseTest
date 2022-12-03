@@ -12,7 +12,7 @@ const DiaryDetailPage = () => {
   /** 일기목록 조회 api */
   const diaryDetailRequest = async () => {
     await axios
-      .post(`http://localhost:8080/diary/view/detail`, {
+      .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/view/detail`, {
         accessToken: getCookie("accessToken"),
         id: parseInt(location.pathname.split("/")[2]),
         refreshToken: getCookie("refreshToken"),

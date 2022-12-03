@@ -33,7 +33,7 @@ const AccountPage = () => {
     const questionRequest = async () => {
 
         await axios
-          .post(`http://localhost:8080/member/view/password-question`, {
+          .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/view/password-question`, {
             accessToken: getCookie("accessToken"),
             refresToken: getCookie("refreshToken"),
             })
@@ -58,7 +58,7 @@ const AccountPage = () => {
         const pwChangeRequest = async () => {
           if(answerAvailable == 1 && pwAble == 1 && pwCheckAble && 1) {
           await axios
-            .post(`http://localhost:8080/member/change/password`, {
+            .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/change/password`, {
               accessToken: getCookie("accessToken"),
              newPassword: pwValue,
               passwordAnswer: answerValue,
@@ -88,7 +88,7 @@ const AccountPage = () => {
           
           axios({
             method: "delete", // [요청 타입]
-            url: "http://localhost:8080/member/withdrawal", // [요청 주소]
+            url: "http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/member/withdrawal", // [요청 주소]
             data: {
               accessToken: getCookie("accessToken"),
                refresToken: getCookie("refreshToken"),
