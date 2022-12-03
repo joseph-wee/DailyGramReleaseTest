@@ -35,7 +35,7 @@ const DiaryWritePage = () => {
         
         {
         await axios
-          .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/write`, {
+          .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/write`, {
             accessToken: getCookie("accessToken"),
             content: content,
             date: dateY + "년" +dateM + "월" + dateD + "일",
@@ -97,9 +97,6 @@ useEffect(() => {
     setDateY(day.format("YYYY"))
     setDateM(day.format("M"))
     setDateD(day.format("D"))
-    if(isLogin) {
-      navigate("/main")
-    }
   }, [])
 
   return (

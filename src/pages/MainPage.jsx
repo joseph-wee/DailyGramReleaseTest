@@ -52,7 +52,7 @@ const MainPage = () => {
             </Link>
           </SignupButton>
           <WriteButton isLogin={isLogin}>
-            <Link to={`/write`} style={{ textDecoration: "none" }}>
+            <Link to={isLogin ? `/diaryWrite` : "/main" } style={{ textDecoration: "none" }}>
               <LinkBox>
                 <Icon>
                   <svg

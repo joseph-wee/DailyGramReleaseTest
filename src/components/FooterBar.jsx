@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { write_icon, list_icon } from "../assets";
+import { useSelector } from "react-redux";
 
 const FooterBar = () => {
+  const isLogin = useSelector((state) => state.isLogin.value);
   return (
     <>
       <Container>
         <MenuListContainer>
-          <Link to={`/diaryWrite`} style={{ textDecoration: "none" }}>
+          <Link to={`/diaryWrite` }  style={{ textDecoration: "none" }}>
             <LinkBox>
               <Icon>
                 <svg
@@ -26,7 +27,7 @@ const FooterBar = () => {
           </Link>
         </MenuListContainer>
         <MenuListContainer>
-          <Link to={`/diaryList`} style={{ textDecoration: "none" }}>
+          <Link  to={`/diaryList` } style={{ textDecoration: "none" }}>
             <LinkBox>
               <Icon>
                 <svg

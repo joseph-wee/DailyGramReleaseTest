@@ -2,14 +2,19 @@ import React from 'react'
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
 import { introduction_icon, list_icon, notice_icon, write_icon } from '../assets'
+import { useSelector, useDispatch } from "react-redux";
 
 const SideBar = () => {
+
+  const isLogin = useSelector((state) => state.isLogin.value);
+  const dispatch = useDispatch()
+
   return (
     <>
     <Container>
       <Title>메뉴</Title>
       <MenuListContainer>
-      <Link to={`/diaryList` } style={{ textDecoration: "none"}}>
+      <Link to={isLogin ? `/diaryList` : "/main"} style={{ textDecoration: "none"}}>
         <LinkBox>
           <Icon src={list_icon}/>
           <MenuText>- 일기목록</MenuText>
@@ -17,7 +22,7 @@ const SideBar = () => {
         </Link>
       </MenuListContainer>
       <MenuListContainer>
-      <Link to={`/diaryWrite` } style={{ textDecoration: "none"}}>
+      <Link to={isLogin ? `/diaryWrite` : "/main" } style={{ textDecoration: "none"}}>
         <LinkBox>
         <Icon src={write_icon}/>
           <MenuText>- 일기작성</MenuText>
