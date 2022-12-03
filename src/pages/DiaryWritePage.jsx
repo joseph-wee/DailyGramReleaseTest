@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 import dayjs from "dayjs";
+import axios from "axios";
 
 const DiaryWritePage = () => {
   const [titleActive, setTitleActive] = useState(false)
@@ -13,41 +15,50 @@ const DiaryWritePage = () => {
   const [dateY, setDateY] = useState(""); // 년
   const [dateM, setDateM] = useState(""); // 월
   const [dateD, setDateD] = useState(""); // 일
+  const [weather, setWeather] = useState("맑음")
+  const [feel, setFeel] = useState("행복")
+  const [title, setTitle] = useState("")
+  const [content, setContent] = useState("")
+
+  const isLogin = useSelector((state) => state.isLogin.value);
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
 
 
 
   const day = dayjs();
 
       /** 일기작성 요청 api */
-      // const writeRequest = async () => {
-      //   if(e == 1) {
-      //   await axios
-      //     .post(`http://localhost:8080/diary/write`, {
-      //       accessToken: getCookie("accessToken"),
-      //       content: contentValue,
-      //       date: dateValue,
-      //       feeling: feelingValue,
-      //       refreshToken: getCookie("refreshToken"),
-      //       title: titleValue,
-      //       weather: weatherValue
-      //         })
-      //     .then(res => {
-      //       if(res.data.result == true) {
-      //         setCookie("accessToken", res.data.accessToken, 1)
-      //         setCookie("refreshToken", res.data.refreshToken, 1)
-      //         dispatch(login())
-      //         navigate("/main")
-      //       }
-      //       else {
-      //         alert("존재하지 않는 이메일입니다.")
-      //       }
-      //     })
-      //     .catch(error => {
-      //       alert("요청에 실패하였습니다.")
-      //       console.log(error);
-      //     })
-      //   }
-      // };
+      const writeRequest = async () => {
+        if(dateY.length == 4 && dateM.length > 0 && dateD.length > 0 && dateD < 32 && dateD > 0 && title.length > 0 && content.length > 0)
+        
+        {
+        await axios
+          .post(`http://localhost:8080/diary/write`, {
+            accessToken: getCookie("accessToken"),
+            content: content,
+            date: dateY + "년" +dateM + "월" + dateD + "일",
+            feeling: feel,
+            refreshToken: getCookie("refreshToken"),
+            title: title,
+            weather: weather
+              })
+          .then(res => {
+            if(res.data.tokenResult == true) {
+              navigate("/diaryList")
+            }
+            else {
+              alert("다시 로그인해 주세요.")
+              navigate("/main")
+            }
+          })
+          .catch(error => {
+            alert("요청에 실패하였습니다.")
+            console.log(error);
+          })
+        }
+      };
 
             /**쿠키값 얻기 */
   function getCookie(name) {
@@ -76,10 +87,6 @@ const DiaryWritePage = () => {
     }
   }
 
-  const test = (value) => {
-    console.log(value)
-  }
-
 
 useEffect(() => {
   dateCheckHandler()
@@ -90,6 +97,9 @@ useEffect(() => {
     setDateY(day.format("YYYY"))
     setDateM(day.format("M"))
     setDateD(day.format("D"))
+    if(isLogin) {
+      navigate("/main")
+    }
   }, [])
 
   return (
@@ -124,7 +134,7 @@ useEffect(() => {
           </WeatherText>
           <Select
             id="weather"
-            onChange={(e) => test(e.target.value)}
+            onChange={(e) => setWeather(e.target.value)}
           >
             <option value="맑음">맑음</option>
             <option value="선선">선선</option>
@@ -144,7 +154,7 @@ useEffect(() => {
           </WeatherText>
           <Select
             id="feel"
-
+            onChange={(e) => setFeel(e.target.value)}
           >
             <option value="행복">행복</option>
             <option value="사랑">사랑</option>
@@ -175,7 +185,8 @@ useEffect(() => {
           <TitleInput
             id="title"
             onFocus={()=>setTitleActive(true)}
-            onBlur={()=>setTitleActive(false)}
+            onBlur={()=>title ? setTitleActive(true) : setTitleActive(false)}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </InputContainer>
         <InputContainer>
@@ -185,11 +196,12 @@ useEffect(() => {
           <TextArea
             id="content"
             onFocus={()=>setContentActive(true)}
-            onBlur={()=>setContentActive(false)}
+            onBlur={()=>content ? setContentActive(true) : setContentActive(false)}
+            onChange={(e) => setContent(e.target.value)}
           />
         </InputContainer>
 
-        <SaveButton
+        <SaveButton onClick={()=>writeRequest()}
         >
           일기 저장
         </SaveButton>
