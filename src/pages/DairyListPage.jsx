@@ -13,7 +13,6 @@ const DairyListPage = () => {
   const isLogin = useSelector((state) => state.isLogin.value);
   const dispatch = useDispatch()
 
-
   /** 일기목록 조회 api */
   const listRequest = async (num) => {
     await axios
@@ -31,7 +30,7 @@ const DairyListPage = () => {
       });
   };
 
-  /** 일기 목록 조회 api */
+  /** 일기 개수 조회 api */
   const listCountReqeust = async () => {
     await axios
       .post(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/view/diary-num`, {
@@ -51,26 +50,6 @@ const DairyListPage = () => {
         console.log(error);
       });
   };
-
-    /** test api */
-    const test = (num) => {
-      axios({
-        method: "post", // [요청 타입]
-        url: "http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/view/list`", // [요청 주소]
-        data: {
-          accessToken: getCookie("accessToken"),
-          page: num,
-          refreshToken: getCookie("refreshToken"),
-        }, // [요청 데이터]
-      })
-        .then(function (response) {
-          setList(response.data.diaryResponseDtos);
-        })
-        .catch(function (error) {
-          alert("요청에 실패하였습니다.");
-          console.log(error);
-        });
-    };
 
   /** 일기 삭제 요청 api */
   const deleteDiaryRequest = (id) => {
@@ -93,28 +72,6 @@ const DairyListPage = () => {
       });
   };
 
-    /** 일기삭제 조회 api */
-    const test2 = async (id) => {
-      await axios
-        .delete(`http://dailygram-env-2.eba-33ajdt9q.ap-northeast-2.elasticbeanstalk.com/diary/delete`, 
-        {
-          data: {
-            accessToken: getCookie("accessToken"),
-            id: id,
-            refreshToken: getCookie("refreshToken"),
-          }
-        },
-        )
-        .then((res) => {
-          alert("삭제되었습니다.")
-          window.location.reload()
-        })
-        .catch((error) => {
-          alert("요청에 실패하였습니다.");
-          console.log(error);
-        });
-    };
-
   /**쿠키값 얻기 */
   function getCookie(name) {
     var i,
@@ -134,8 +91,29 @@ const DairyListPage = () => {
     }
   }
 
+      /** test api */
+      const test = (num) => {
+        axios({
+          method: "post", // [요청 타입]
+          url: "http://localhost:8080/diary/view/list", // [요청 주소]
+          data: {
+            accessToken: getCookie("accessToken"),
+            page: num,
+            refreshToken: getCookie("refreshToken"),
+          }, // [요청 데이터]
+        })
+          .then(function (response) {
+            setList(response.data.diaryResponseDtos);
+          })
+          .catch(function (error) {
+            alert("요청에 실패하였습니다.");
+            console.log(error);
+          });
+      };
+
   useEffect(() => {
     listRequest(1);
+    // test(1)
     listCountReqeust();
   }, []);
   return (
@@ -176,7 +154,7 @@ const DairyListPage = () => {
         {pageList
           ? pageList.map((i) => {
               return (
-                <PageNum key={i + "num"} onClick={() => listRequest(i+1)}>
+                <PageNum key={i + "num"} onClick={() => listRequest()}>
                   {i + 1}
                 </PageNum>
               );

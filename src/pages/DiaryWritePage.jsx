@@ -47,6 +47,7 @@ const DiaryWritePage = () => {
           .then(res => {
             if(res.data.tokenResult == true) {
               navigate("/diaryList")
+   
             }
             else {
               alert("다시 로그인해 주세요.")
