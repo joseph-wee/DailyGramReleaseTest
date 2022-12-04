@@ -292,10 +292,8 @@ const SignupPage = () => {
         
         DailyGram은 여러분이 서비스에 처음 가입할 때 여러분의 이메일과, 암호화된 비밀번호, 비밀번호 찾기 질문, 비밀번호 찾기 답변을 수집합니다. 또한, 서비스 이용과정 과정에서 단말기정보(OS, 화면사이즈, 디바이스 아이디), IP주소, 쿠키, 방문일시, 부정이용기록, 서비스 이용 기록 등의 정보가 자동으로 생성되어 수집될 수 있습니다.
         <br/><br/>
-        DailyGram은 여러분의 소중한 개인정보를 보호하기 위해 다음과 같은 역할을 합니다.
-        <br/><br/>
-DailyGram은 사용자의 브라우저, 스마트폰, 디바이스와 DailyGram 웹사이트 간의 모든 통신을 데이터의 기밀성을 유지해줄 수 있는 Https 암호화 인터넷 통신 프로토콜을 이용합니다. 
-<br/><br/>
+       
+
 DailyGram은 여러분의 별도 동의가 있는 경우나 법령에 규정된 경우를 제외하고는 여러분의 개인정보를 절대 제3자에게 제공하지 않습니다.
 <br/><br/>
 DailyGram은 사용자의 개인정보를 중요하게 여깁니다. 사용자가 제공한 개인정보는 DailyGram 서비스를 제공하기 위해서만 사용되며, 여러분의 개인정보를 절대 제 3자에게 제공하지 않습니다.
@@ -477,11 +475,11 @@ const PrivacyNoticeContainer = styled.div`
   display: ${(props) => {
     return props.privacyActive == false ? "none" : "block"
   }};
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   background-color: rgba(0,0,0,0.3);
 `
 
@@ -496,11 +494,15 @@ const PrivacyBox = styled.div`
   padding-right: 25px;
   padding-bottom: 10px;
   width: 75vw;
+  @media screen and (max-width: 650px) {
+    max-height: 500px;
+};
   background-color: #FFFFFF;
   box-sizing: border-box;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+  overflow: scroll;
 `
 const PrivacyTitle = styled.div`
   margin-bottom: 20px;

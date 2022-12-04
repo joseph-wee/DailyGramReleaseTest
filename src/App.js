@@ -109,6 +109,7 @@ const PageContainer = styled.div`
   padding-top: 30px;
   padding-left: 204px;
   padding-right: 20px;
+  padding-bottom: 70px;
   box-sizing: border-box;
   @media screen and (max-width: 820px) {
     padding-left: 20px;

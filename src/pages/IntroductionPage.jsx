@@ -14,9 +14,14 @@ const IntroductionPage = () => {
         <Text>DailyGram의 모든 서비스는 무료입니다.</Text>
         <Text>당신의 하루를 기록해보세요.</Text>
         <Line />
-        <LastText>
-          새 기능 및 버그 관련 문의는 <Icon src={mail_icon}/>test@gmail.com 로 문의 부탁드립니다.
-        </LastText>
+        <TextContainer>
+          <LastText>새 기능 및 버그 관련 문의는</LastText>
+          <LastText>
+            <Icon src={mail_icon} />
+
+            intack@nate.com 로 문의 부탁드립니다.
+          </LastText>
+        </TextContainer>
       </Container>
     </>
   );
@@ -25,6 +30,8 @@ const IntroductionPage = () => {
 const Container = styled.div`
   min-height: 270px;
   padding-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
   box-sizing: border-box;
   border-radius: 10px;
   background-color: white;
@@ -43,7 +50,7 @@ const Title = styled.div`
 const Text = styled.div`
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 15px;
+  line-height: 30px;
   max-width: 500px;
   text-align: center;
 `;
@@ -51,21 +58,25 @@ const Line = styled.div`
   margin: 0 auto;
   margin-bottom: 20px;
   max-width: 450px;
-  border: 0.5px solid #BBBBBB;
+  border: 0.5px solid #bbbbbb;
 `;
+const TextContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`
 const LastText = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  flex-wrap: wrap;
   margin-bottom: 15px;
-  max-width: 500px;
   text-align: center;
 `;
 const Icon = styled.img`
   margin-left: 10px;
   margin-right: 3px;
   height: 23px;
-`
+`;
 
 export default IntroductionPage;

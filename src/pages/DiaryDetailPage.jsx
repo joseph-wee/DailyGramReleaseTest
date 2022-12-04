@@ -80,9 +80,6 @@ const Card = styled.div`
   background-color: white;
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
   };
-  @media screen and (max-width: 599px) {
-    width: 100%;
-  }
 `;
 
 const Title = styled.div`

@@ -9,7 +9,7 @@ const FooterBar = () => {
     <>
       <Container>
         <MenuListContainer>
-          <Link to={`/diaryWrite` }  style={{ textDecoration: "none" }}>
+          <Link to={isLogin ? `/diaryWrite` : "/login" }  style={{ textDecoration: "none" }}>
             <LinkBox>
               <Icon>
                 <svg
@@ -27,7 +27,7 @@ const FooterBar = () => {
           </Link>
         </MenuListContainer>
         <MenuListContainer>
-          <Link  to={`/diaryList` } style={{ textDecoration: "none" }}>
+          <Link to={isLogin ? `/diaryList` : "/login" }  style={{ textDecoration: "none" }}>
             <LinkBox>
               <Icon>
                 <svg

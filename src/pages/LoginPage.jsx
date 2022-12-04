@@ -47,7 +47,7 @@ const LoginPage = () => {
             navigate("/main")
           }
           else {
-            alert("존재하지 않는 이메일입니다.")
+            alert("다시 입력해주세요.")
           }
         })
         .catch(error => {

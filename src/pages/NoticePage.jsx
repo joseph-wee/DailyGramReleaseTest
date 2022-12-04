@@ -30,8 +30,8 @@ const Title = styled.div`
 const NoticeListBox = styled.div`
   display: flex;
   height: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 18px;
+  padding-right: 18px;
   align-items: center;
 box-sizing: border-box;
   border-radius: 5px;

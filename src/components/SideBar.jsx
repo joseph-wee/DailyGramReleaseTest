@@ -14,7 +14,7 @@ const SideBar = () => {
     <Container>
       <Title>메뉴</Title>
       <MenuListContainer>
-      <Link to={isLogin ? `/diaryList` : "/main"} style={{ textDecoration: "none"}}>
+      <Link to={isLogin ? `/diaryList` : "/login"} style={{ textDecoration: "none"}}>
         <LinkBox>
           <Icon src={list_icon}/>
           <MenuText>- 일기목록</MenuText>
@@ -22,7 +22,7 @@ const SideBar = () => {
         </Link>
       </MenuListContainer>
       <MenuListContainer>
-      <Link to={isLogin ? `/diaryWrite` : "/main" } style={{ textDecoration: "none"}}>
+      <Link to={isLogin ? `/diaryWrite` : "/login" } style={{ textDecoration: "none"}}>
         <LinkBox>
         <Icon src={write_icon}/>
           <MenuText>- 일기작성</MenuText>
