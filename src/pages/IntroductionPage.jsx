@@ -18,8 +18,7 @@ const IntroductionPage = () => {
           <LastText>새 기능 및 버그 관련 문의는</LastText>
           <LastText>
             <Icon src={mail_icon} />
-
-            intack@nate.com 로 문의 부탁드립니다.
+            intacka@nate.com 로 문의 부탁드립니다.
           </LastText>
         </TextContainer>
       </Container>
@@ -64,7 +63,7 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-`
+`;
 const LastText = styled.div`
   display: flex;
   align-items: center;
